@@ -11,7 +11,6 @@ import SelectQuoteCurrencyOverlay from './components/SelectQuoteCurrencyOverlay'
 import "./App.css"
 import SwipeableEdgeDrawer from './components/SwipableEdgeDrawer'
 import UpdatedWidget from './components/UpdatedWidget'
-
 export const AppContext = createContext(null)
 
 function getYesterdayDate() {
