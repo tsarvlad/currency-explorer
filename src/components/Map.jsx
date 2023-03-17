@@ -45,7 +45,7 @@ function HoverEffectMap() {
         });
 
         map.addControl(new mapboxgl.AttributionControl({
-            customAttribution: `<a href="${import.meta.env.VITE_PORTFOLIO_LINK}">Vladyslav Tsaryniak</a>`
+            customAttribution: `<a href="${import.meta.env.VITE_PORTFOLIO_LINK}">Liubomyr Tsaryniak</a>`
         }));
 
         map.on("load", () => {
