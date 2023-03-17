@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Button } from '@mui/material';
+import { Button, useMediaQuery } from '@mui/material';
 import { AppContext } from "../App";
 import ReactFlagsSelect from "react-flags-select";
 import { customLabelsFill } from '../assets/SelectorCustomLabels';
@@ -7,8 +7,10 @@ import "../index.css"
 
 
 const SelectQuoteCurrencyOverlay = () => {
+    const isSmallScreen = useMediaQuery('(max-width:640px)');
     const { selectedQuoteCurrency, setSelectedQuoteCurrency,
-        isHiddenQuoteSelector, setIsHiddenQuoteSelector } = useContext(AppContext);
+        isHiddenQuoteSelector, setIsHiddenQuoteSelector,
+        isVisibleDrawer } = useContext(AppContext);
     return (
         <div className={`absolute top-0 left-0 h-[100vh] w-[100%] flex justify-center items-center
         bg-[rgba(0,0,0,0.4)] ${isHiddenQuoteSelector && 'hidden'} z-10`}
@@ -25,7 +27,7 @@ const SelectQuoteCurrencyOverlay = () => {
                     selected={selectedQuoteCurrency}
                     onSelect={(code) => setSelectedQuoteCurrency(code)}
                     placeholder="Select your country"
-                    searchable
+                    searchable={isVisibleDrawer && isSmallScreen ? false : true}
                     customLabels={customLabelsFill}
                     selectedSize={18}
                 />
