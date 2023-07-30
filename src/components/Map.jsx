@@ -42,7 +42,7 @@ function HoverEffectMap() {
             zoom: 2.75,
             projection: "globe",
             attributionControl: false
-        });
+        });``
 
         map.addControl(new mapboxgl.AttributionControl({
             customAttribution: `<a href="${import.meta.env.VITE_PORTFOLIO_LINK}">Vladyslav Tsaryniak</a>`
