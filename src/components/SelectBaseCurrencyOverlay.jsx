@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Button, useMediaQuery } from '@mui/material';
+import { Button } from '@mui/material';
 import { AppContext } from "../App";
 import ReactFlagsSelect from "react-flags-select";
 import { customLabelsFill } from '../assets/SelectorCustomLabels';
@@ -7,10 +7,8 @@ import "../index.css"
 
 
 const SelectBaseCurrencyOverlay = () => {
-    const isSmallScreen = useMediaQuery('(max-width:640px)');
     const { selectedBaseCurrency, setSelectedBaseCurrency,
-        isHiddenBaseSelector, setIsHiddenBaseSelector, setTrigger,
-        isVisibleDrawer }
+        isHiddenBaseSelector, setIsHiddenBaseSelector, setTrigger }
         = useContext(AppContext);
     return (
         <div className={`absolute top-0 left-0 h-[100vh] w-[100%] flex justify-center items-center
@@ -31,7 +29,7 @@ const SelectBaseCurrencyOverlay = () => {
                         setTrigger(prev => !prev)
                     }}
                     placeholder="Select your country"
-                    searchable={isVisibleDrawer && isSmallScreen ? false : true}
+                    searchable
                     selectedSize={18}
                     customLabels={customLabelsFill}
                     showSecondarySelectedLabel={false}
