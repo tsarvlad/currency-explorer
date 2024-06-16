@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 import { AppContext } from "../App";
 
@@ -8,21 +8,12 @@ import COUNTRIES from "../assets/geojson";
 import COUNTRY_COLORS_PALETTE from "../assets/ColorsPalette";
 import { customLabelsFill } from "../assets/SelectorCustomLabels";
 import { countryToCode } from "../assets/SelectorCustomLabels";
+import { calculateExchangePercentageChange } from "../helpers"
 
 import "../App.css"
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOXGL_ACCESS_TOKEN
-function calculateExchangePercentageChange(yesterday, today) {
-    if (today > yesterday) {
-        const difference = today - yesterday
-        const percentageChange = (difference / yesterday) * 100;
-        return { value: Math.abs(Math.round(percentageChange * 100) / 100), sign: 'positive' };
-    } else {
-        const difference = yesterday - today;
-        const percentageChange = (difference / yesterday) * 100;
-        return { value: Math.abs(Math.round(percentageChange * 100) / 100), sign: 'negative' };
-    }
-}
+
 
 
 function HoverEffectMap() {
@@ -45,7 +36,7 @@ function HoverEffectMap() {
         });``
 
         map.addControl(new mapboxgl.AttributionControl({
-            customAttribution: `<a href="${import.meta.env.VITE_PORTFOLIO_LINK}">Liubomyr Tsaryniak</a>`
+            customAttribution: import.meta.env.VITE_CUSTOM_ATTRIBUTION
         }));
 
         map.on("load", () => {
